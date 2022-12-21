@@ -1,9 +1,8 @@
 package org.generation.italy.demo.service;
 
 import java.util.List;
-import java.util.Locale.Category;
 
-import org.generation.italy.demo.repo.CategoryRepo;
+import org.generation.italy.demo.pojo.Category;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,7 @@ import jakarta.transaction.Transactional;
 public class CategoryService {
 
 	@Autowired
-	private CategoryRepo categoryRepo;
+	private CategoryService categoryRepo;
 	
 	public void save(Category categories) {
 		categoryRepo.save(categories);

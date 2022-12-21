@@ -36,9 +36,24 @@ public class PhotoService {
 		photoRepo.deleteById(id);
 	}
 	
+	
 	public List<Photo> findByName(String name) {
 		return photoRepo.findByNameContainingIgnoreCase(name);
 	}
+	
+	
+	@Transactional
+	public List<Photo> findAllPhotosTags() {
+		
+		List<Photo> photos = photoRepo.findAll();
+		
+		for (Photo photo : photos) {
+			Hibernate.initialize(photo.getTags());
+		}
+		
+		return photos;
+	}
+	
 	
 	@Transactional
 	public List<Photo> findAllPhotoCategory() {
