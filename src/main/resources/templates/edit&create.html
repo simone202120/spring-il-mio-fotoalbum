@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form th:action="@{'/admin/' + ${element} + '/' + ${action} (id=*{id}) }"  method="POST" th:object="${obj}">
+		
+		<p th:text="${routeName.equals('edit')}?'Modifica Post':'Crea Post'"></p>
+
+		<label class="d-block fw-bold pb-2">Titolo:</label>
+		<input type="text" name="title" th:field="*{title}"placeholder="Inserisci il titolo"/>
+					
+		<label>Descrizione:</label>
+		<input type="text" name="description" th:field="*{description}" placeholder="descrizione della foto" />
+		
+		<label>URL:</label>
+		<input type="text" th:field="*{url}"placeholder="Inserisci l'url della foto"/> 
+					
+			
+		<label class="fw-bold pe-2 d-inline-block">Tag:</label>
+		<input type="text" name="tag" th:field="*{tag}"placeholder="Inserisci il tag"/>
+							
+			
+		<input type="radio" name="visible" value="true" id="chY" th:field="*{visible}"/>
+			   
+		<label for="chY" >Si</label>
+
+		<input type="radio" name="visible" value="false" id="chF" 
+			   th:field="*{visible}"/>
+		<label for="chF">No</label>
+	
+		<label>Categorie:</label>
+							
+			<span th:each="category : ${categories}" th:object="${category}"> 
+				 
+				<input type="checkbox" name="categories" th:value="*{id}" th:field="${obj.categories}" />
+					
+				<label>[[${category.name}]]</label>
+			</span>
+
+		<input type="submit" th:value="${type}" />
+		
+	</form>
+
+</body>
+</html>

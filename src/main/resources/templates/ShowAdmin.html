@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MAIN</title>
+</head>
+<body>
+			
+	<a href="/admin/photo/index">INDIETRO
+	</a>
+	
+	<div>
+		<ul>
+			<li>[[${photo.title}]]	</li>
+			
+			<li>[[${photo.id}]]</li>
+			
+			<li>[[${photo.description}]]</li>
+			
+			<li>[[${photo.url}]] </li>
+				
+			<li>[[${photo.visible}]]</li>
+				
+			<li>CATEGORY: [[${category.name}]]</li>
+					
+			<li><span th:if="${photo.tag}">[[${photo.tag}]], </span><li>
+				
+			
+		</ul>
+		<div class="text-center">			   
+			<a th:href="@{'/admin/photo/edit/{id}' (id=*{id}) }">
+			   	Modifica
+		   	</a>
+			<a th:href="@{'/admin/photo/delete/{id}' (id=*{id}) }">
+				Elimina
+		   	</a>
+		</div>
+	</div>
+
+
+</body>
+</html>
